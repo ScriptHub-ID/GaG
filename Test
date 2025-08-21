@@ -155,26 +155,38 @@ local function countdownAndRandomize(button)
     button.Text = "🎲 Randomize Pets"
 end
 
--- 🖤 Black Themed UI
+-- GUI Setup
 local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 screenGui.Name = "PetHatchGui"
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 260, 0, 170) -- shrunk height
+frame.Size = UDim2.new(0, 260, 0, 200)
 frame.Position = UDim2.new(0, 20, 0, 100)
-frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20) -- black theme
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 frame.BorderSizePixel = 0
 frame.Parent = screenGui
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 10)
 Instance.new("UIStroke", frame).Color = Color3.fromRGB(80, 80, 80)
 
 local title = Instance.new("TextLabel", frame)
-title.Size = UDim2.new(1, 0, 0, 30)
+title.Size = UDim2.new(1, -10, 0, 30)
+title.Position = UDim2.new(0, 5, 0, 0)
 title.BackgroundTransparency = 1
-title.Text = "🥚 Egg Randomizer | Made by Pxz and Kodamatzk"
+title.Text = "🥚 Egg Randomizer"
 title.Font = Enum.Font.FredokaOne
-title.TextSize = 18
+title.TextSize = 20
 title.TextColor3 = Color3.fromRGB(255, 215, 0)
+title.TextXAlignment = Enum.TextXAlignment.Left
+
+local subtitle = Instance.new("TextLabel", frame)
+subtitle.Size = UDim2.new(1, -10, 0, 20)
+subtitle.Position = UDim2.new(0, 5, 0, 25)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "Made by Pxz and Kodamatzk"
+subtitle.Font = Enum.Font.FredokaOne
+subtitle.TextSize = 14
+subtitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+subtitle.TextXAlignment = Enum.TextXAlignment.Left
 
 local drag = Instance.new("TextButton", title)
 drag.Size = UDim2.new(1, 0, 1, 0)
@@ -195,28 +207,27 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
--- 🎲 Randomize Button
+-- Buttons
 local randomizeBtn = Instance.new("TextButton", frame)
 randomizeBtn.Size = UDim2.new(1, -20, 0, 50)
-randomizeBtn.Position = UDim2.new(0, 10, 0, 40)
-randomizeBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+randomizeBtn.Position = UDim2.new(0, 10, 0, 55)
+randomizeBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
 randomizeBtn.Text = "🎲 Randomize Pets"
 randomizeBtn.TextSize = 20
 randomizeBtn.Font = Enum.Font.FredokaOne
-randomizeBtn.TextColor3 = Color3.fromRGB(0, 255, 0)
+randomizeBtn.TextColor3 = Color3.new(1, 1, 1)
 randomizeBtn.MouseButton1Click:Connect(function()
     countdownAndRandomize(randomizeBtn)
 end)
 
--- 👁️ ESP Toggle
 local toggleBtn = Instance.new("TextButton", frame)
 toggleBtn.Size = UDim2.new(1, -20, 0, 40)
-toggleBtn.Position = UDim2.new(0, 10, 0, 100)
-toggleBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+toggleBtn.Position = UDim2.new(0, 10, 0, 110)
+toggleBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 toggleBtn.Text = "👁️ ESP: ON"
 toggleBtn.TextSize = 18
 toggleBtn.Font = Enum.Font.FredokaOne
-toggleBtn.TextColor3 = Color3.fromRGB(0, 200, 255)
+toggleBtn.TextColor3 = Color3.new(1, 1, 1)
 toggleBtn.MouseButton1Click:Connect(function()
     espEnabled = not espEnabled
     toggleBtn.Text = espEnabled and "👁️ ESP: ON" or "👁️ ESP: OFF"
@@ -229,10 +240,13 @@ toggleBtn.MouseButton1Click:Connect(function()
     end
 end)
 
--- 🔁 Auto Randomize
+for _, egg in pairs(getPlayerGardenEggs(60)) do
+    applyEggESP(egg, truePetMap[egg])
+end
+
 local autoBtn = Instance.new("TextButton", frame)
 autoBtn.Size = UDim2.new(1, -20, 0, 30)
-autoBtn.Position = UDim2.new(0, 10, 0, 145)
+autoBtn.Position = UDim2.new(0, 10, 0, 155)
 autoBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 autoBtn.Text = "🔁 Auto Randomize: OFF"
 autoBtn.TextSize = 16
@@ -263,8 +277,3 @@ autoBtn.MouseButton1Click:Connect(function()
         end
     end)()
 end)
-
--- Apply ESP initially
-for _, egg in pairs(getPlayerGardenEggs(60)) do
-    applyEggESP(egg, truePetMap[egg])
-end
