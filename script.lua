@@ -24,6 +24,7 @@ local petTable = {
     ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus" },
     ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus" },
 	["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
+	["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
 }
 
 local espEnabled = true
