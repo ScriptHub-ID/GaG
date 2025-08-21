@@ -23,8 +23,8 @@ local petTable = {
     ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara" },
     ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus" },
     ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus" },
-	["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
-	["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
+    ["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
+    ["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
 }
 
 local espEnabled = true
@@ -149,7 +149,7 @@ local function flashEffect(button)
 end
 
 local function countdownAndRandomize(button)
-    for i = 10, 1, -1 do
+    for i = 5, 1, -1 do
         button.Text = "🎲 Randomize in: " .. i
         wait(1)
     end
@@ -158,24 +158,38 @@ local function countdownAndRandomize(button)
     button.Text = "🎲 Randomize Pets"
 end
 
+-- GUI Setup
 local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 screenGui.Name = "PetHatchGui"
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 260, 0, 260)
+frame.Size = UDim2.new(0, 260, 0, 200)
 frame.Position = UDim2.new(0, 20, 0, 100)
-frame.BackgroundColor3 = Color3.fromRGB(105, 80, 60)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 frame.BorderSizePixel = 0
 frame.Parent = screenGui
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 10)
+Instance.new("UIStroke", frame).Color = Color3.fromRGB(80, 80, 80)
 
 local title = Instance.new("TextLabel", frame)
-title.Size = UDim2.new(1, 0, 0, 30)
+title.Size = UDim2.new(1, -10, 0, 30)
+title.Position = UDim2.new(0, 5, 0, 0)
 title.BackgroundTransparency = 1
-title.Text = "🐾 Pet Randomizer ✨"
+title.Text = "🥚 Egg Randomizer"
 title.Font = Enum.Font.FredokaOne
-title.TextSize = 22
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextSize = 20
+title.TextColor3 = Color3.fromRGB(255, 215, 0)
+title.TextXAlignment = Enum.TextXAlignment.Left
+
+local subtitle = Instance.new("TextLabel", frame)
+subtitle.Size = UDim2.new(1, -10, 0, 20)
+subtitle.Position = UDim2.new(0, 5, 0, 25)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "Made by Pxz and Kodamatzk"
+subtitle.Font = Enum.Font.FredokaOne
+subtitle.TextSize = 14
+subtitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+subtitle.TextXAlignment = Enum.TextXAlignment.Left
 
 local drag = Instance.new("TextButton", title)
 drag.Size = UDim2.new(1, 0, 1, 0)
@@ -196,9 +210,10 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
+-- Buttons
 local randomizeBtn = Instance.new("TextButton", frame)
 randomizeBtn.Size = UDim2.new(1, -20, 0, 50)
-randomizeBtn.Position = UDim2.new(0, 10, 0, 40)
+randomizeBtn.Position = UDim2.new(0, 10, 0, 55)
 randomizeBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
 randomizeBtn.Text = "🎲 Randomize Pets"
 randomizeBtn.TextSize = 20
@@ -210,7 +225,7 @@ end)
 
 local toggleBtn = Instance.new("TextButton", frame)
 toggleBtn.Size = UDim2.new(1, -20, 0, 40)
-toggleBtn.Position = UDim2.new(0, 10, 0, 100)
+toggleBtn.Position = UDim2.new(0, 10, 0, 110)
 toggleBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 toggleBtn.Text = "👁️ ESP: ON"
 toggleBtn.TextSize = 18
@@ -234,12 +249,12 @@ end
 
 local autoBtn = Instance.new("TextButton", frame)
 autoBtn.Size = UDim2.new(1, -20, 0, 30)
-autoBtn.Position = UDim2.new(0, 10, 0, 145)
-autoBtn.BackgroundColor3 = Color3.fromRGB(80, 150, 60)
+autoBtn.Position = UDim2.new(0, 10, 0, 155)
+autoBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 autoBtn.Text = "🔁 Auto Randomize: OFF"
 autoBtn.TextSize = 16
 autoBtn.Font = Enum.Font.FredokaOne
-autoBtn.TextColor3 = Color3.new(1, 1, 1)
+autoBtn.TextColor3 = Color3.fromRGB(255, 100, 100)
 
 local autoRunning = false
 local bestPets = {
@@ -264,167 +279,4 @@ autoBtn.MouseButton1Click:Connect(function()
             wait(1)
         end
     end)()
-end)
-
-local loadPetBtn = Instance.new("TextButton", frame)
-loadPetBtn.Size = UDim2.new(1, -20, 0, 30)
-loadPetBtn.Position = UDim2.new(0, 10, 1, -75)
-loadPetBtn.BackgroundColor3 = Color3.fromRGB(100, 90, 200)
-loadPetBtn.Text = "🧬 Pet Mutation Esp Script"
-loadPetBtn.TextSize = 16
-loadPetBtn.Font = Enum.Font.FredokaOne
-loadPetBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-
-loadPetBtn.MouseButton1Click:Connect(function()
-
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local PlayerGui = player:WaitForChild("PlayerGui")
-local Workspace = game:GetService("Workspace")
-local TweenService = game:GetService("TweenService")
-local RunService = game:GetService("RunService")
-
-local mutations = {
-    "Shiny", "Inverted", "Frozen", "Windy", "Golden", "Mega", "Tiny",
-    "Tranquil", "IronSkin", "Radiant", "Rainbow", "Shocked", "Ascended"
-}
-local currentMutation = mutations[math.random(#mutations)]
-local espVisible = true
-
-local gui = Instance.new("ScreenGui")
-gui.Name = "PetMutationFinder"
-gui.ResetOnSpawn = false
-gui.Parent = PlayerGui
-
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 220, 0, 185)
-frame.Position = UDim2.new(0.4, 0, 0.4, 0)
-frame.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
-frame.BorderColor3 = Color3.fromRGB(80, 80, 90)
-frame.BorderSizePixel = 2
-frame.Active = true
-frame.Draggable = true
-frame.Parent = gui
-
-Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
-Instance.new("UIStroke", frame).Color = Color3.fromRGB(100, 100, 110)
-
-local title = Instance.new("TextLabel", frame)
-title.Size = UDim2.new(1, 0, 0, 35)
-title.Text = "🔍 Pet Mutation Finder 🧬"
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.BackgroundTransparency = 1
-title.Font = Enum.Font.GothamBold
-title.TextSize = 18
-
-local function createButton(text, yPos, color)
-	local btn = Instance.new("TextButton")
-	btn.Size = UDim2.new(0.9, 0, 0, 35)
-	btn.Position = UDim2.new(0.05, 0, 0, yPos)
-	btn.BackgroundColor3 = color
-	btn.Text = text
-	btn.Font = Enum.Font.GothamMedium
-	btn.TextSize = 16
-	btn.TextColor3 = Color3.new(0, 0, 0)
-	btn.AutoButtonColor = false
-
-	Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
-	local stroke = Instance.new("UIStroke", btn)
-	stroke.Color = Color3.fromRGB(0, 0, 0)
-	stroke.Thickness = 1.2
-
-	btn.MouseEnter:Connect(function()
-		TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = color:Lerp(Color3.new(1,1,1), 0.2)}):Play()
-	end)
-	btn.MouseLeave:Connect(function()
-		TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = color}):Play()
-	end)
-
-	btn.Parent = frame
-	return btn
-end
-
-local reroll = createButton("🔃 Reroll Mutation", 45, Color3.fromRGB(140, 200, 255))
-local toggle = createButton("🔍 Toggle Mutation Esp", 90, Color3.fromRGB(180, 255, 180))
-
-local credit = Instance.new("TextLabel", frame)
-credit.Size = UDim2.new(1, 0, 0, 20)
-credit.Position = UDim2.new(0, 0, 1, -20)
-credit.TextColor3 = Color3.fromRGB(200, 200, 200)
-credit.BackgroundTransparency = 1
-credit.Font = Enum.Font.Gotham
-credit.TextSize = 13
-
-local function findMachine()
-	for _, obj in pairs(Workspace:GetDescendants()) do
-		if obj:IsA("Model") and obj.Name:lower():find("mutation") then
-			return obj
-		end
-	end
-end
-
-local machine = findMachine()
-if not machine or not machine:FindFirstChildWhichIsA("BasePart") then
-	warn("Pet Mutation Machine not found.")
-	return
-end
-
-local basePart = machine:FindFirstChildWhichIsA("BasePart")
-
-local espGui = Instance.new("BillboardGui", basePart)
-espGui.Name = "MutationESP"
-espGui.Adornee = basePart
-espGui.Size = UDim2.new(0, 200, 0, 40)
-espGui.StudsOffset = Vector3.new(0, 3, 0)
-espGui.AlwaysOnTop = true
-
-local espLabel = Instance.new("TextLabel", espGui)
-espLabel.Size = UDim2.new(1, 0, 1, 0)
-espLabel.BackgroundTransparency = 1
-espLabel.Font = Enum.Font.GothamBold
-espLabel.TextSize = 24
-espLabel.TextStrokeTransparency = 0.3
-espLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-espLabel.Text = currentMutation
-
-local hue = 0
-RunService.RenderStepped:Connect(function()
-	if espVisible then
-		hue = (hue + 0.01) % 1
-		espLabel.TextColor3 = Color3.fromHSV(hue, 1, 1)
-	end
-end)
-
-local function animateMutationReroll()
-	reroll.Text = "⏳ Rerolling..."
-	local duration = 2
-	local interval = 0.1
-	for i = 1, math.floor(duration / interval) do
-		espLabel.Text = mutations[math.random(#mutations)]
-		wait(interval)
-	end
-	currentMutation = mutations[math.random(#mutations)]
-	espLabel.Text = currentMutation
-	reroll.Text = "Reroll Mutation"
-end
-
-toggle.MouseButton1Click:Connect(function()
-	espVisible = not espVisible
-	espGui.Enabled = espVisible
-end)
-
-reroll.MouseButton1Click:Connect(animateMutationReroll)
-end)
-
-local loadAgeBtn = Instance.new("TextButton", frame)
-loadAgeBtn.Size = UDim2.new(1, -20, 0, 30)
-loadAgeBtn.Position = UDim2.new(0, 10, 1, -35)
-loadAgeBtn.BackgroundColor3 = Color3.fromRGB(100, 90, 200)
-loadAgeBtn.Text = "🕒 Load Pet Age 50 Script"
-loadAgeBtn.TextSize = 16
-loadAgeBtn.Font = Enum.Font.FredokaOne
-loadAgeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-
-loadAgeBtn.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://pastefy.app/0RyQ7rEh/raw"))()
 end)
