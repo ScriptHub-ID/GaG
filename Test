@@ -20,8 +20,8 @@ local petTable = {
     ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara" },
     ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus" },
     ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus" },
-    ["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
-    ["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
+	["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
+	["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
 }
 
 local espEnabled = true
@@ -146,7 +146,7 @@ local function flashEffect(button)
 end
 
 local function countdownAndRandomize(button)
-    for i = 1, -1 do
+    for i = 10, 1, -1 do
         button.Text = "🎲 Randomize in: " .. i
         wait(1)
     end
@@ -155,39 +155,41 @@ local function countdownAndRandomize(button)
     button.Text = "🎲 Randomize Pets"
 end
 
--- GUI Setup
+-- GUI
 local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 screenGui.Name = "PetHatchGui"
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 260, 0, 200)
+frame.Size = UDim2.new(0, 260, 0, 260)
 frame.Position = UDim2.new(0, 20, 0, 100)
-frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20) -- Black theme
 frame.BorderSizePixel = 0
 frame.Parent = screenGui
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 10)
-Instance.new("UIStroke", frame).Color = Color3.fromRGB(80, 80, 80)
 
+-- Title
 local title = Instance.new("TextLabel", frame)
-title.Size = UDim2.new(1, -10, 0, 30)
+title.Size = UDim2.new(1, -10, 0, 35)
 title.Position = UDim2.new(0, 5, 0, 0)
 title.BackgroundTransparency = 1
 title.Text = "🥚 Egg Randomizer"
 title.Font = Enum.Font.FredokaOne
-title.TextSize = 20
+title.TextSize = 24
 title.TextColor3 = Color3.fromRGB(255, 215, 0)
 title.TextXAlignment = Enum.TextXAlignment.Left
 
+-- Subtitle
 local subtitle = Instance.new("TextLabel", frame)
-subtitle.Size = UDim2.new(1, -10, 0, 20)
-subtitle.Position = UDim2.new(0, 5, 0, 25)
+subtitle.Size = UDim2.new(1, -10, 0, 22)
+subtitle.Position = UDim2.new(0, 5, 0, 30)
 subtitle.BackgroundTransparency = 1
 subtitle.Text = "Made by Pxz and Kodamatzk"
 subtitle.Font = Enum.Font.FredokaOne
-subtitle.TextSize = 14
+subtitle.TextSize = 18
 subtitle.TextColor3 = Color3.fromRGB(200, 200, 200)
 subtitle.TextXAlignment = Enum.TextXAlignment.Left
 
+-- Dragging
 local drag = Instance.new("TextButton", title)
 drag.Size = UDim2.new(1, 0, 1, 0)
 drag.Text = ""
@@ -210,7 +212,7 @@ end)
 -- Buttons
 local randomizeBtn = Instance.new("TextButton", frame)
 randomizeBtn.Size = UDim2.new(1, -20, 0, 50)
-randomizeBtn.Position = UDim2.new(0, 10, 0, 55)
+randomizeBtn.Position = UDim2.new(0, 10, 0, 60) -- moved down
 randomizeBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
 randomizeBtn.Text = "🎲 Randomize Pets"
 randomizeBtn.TextSize = 20
@@ -222,7 +224,7 @@ end)
 
 local toggleBtn = Instance.new("TextButton", frame)
 toggleBtn.Size = UDim2.new(1, -20, 0, 40)
-toggleBtn.Position = UDim2.new(0, 10, 0, 110)
+toggleBtn.Position = UDim2.new(0, 10, 0, 115)
 toggleBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 toggleBtn.Text = "👁️ ESP: ON"
 toggleBtn.TextSize = 18
@@ -245,13 +247,13 @@ for _, egg in pairs(getPlayerGardenEggs(60)) do
 end
 
 local autoBtn = Instance.new("TextButton", frame)
-autoBtn.Size = UDim2.new(1, -20, 0, 30)
-autoBtn.Position = UDim2.new(0, 10, 0, 155)
-autoBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+autoBtn.Size = UDim2.new(1, -20, 0, 40)
+autoBtn.Position = UDim2.new(0, 10, 0, 165)
+autoBtn.BackgroundColor3 = Color3.fromRGB(80, 150, 60)
 autoBtn.Text = "🔁 Auto Randomize: OFF"
 autoBtn.TextSize = 16
 autoBtn.Font = Enum.Font.FredokaOne
-autoBtn.TextColor3 = Color3.fromRGB(255, 100, 100)
+autoBtn.TextColor3 = Color3.new(1, 1, 1)
 
 local autoRunning = false
 local bestPets = {
