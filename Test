@@ -11,8 +11,8 @@ local petTable = {
     ["Rare Egg"] = { "Pig", "Monkey", "Rooster", "Orange Tabby", "Spotted Deer" },
     ["Legendary Egg"] = { "Cow", "Polar Bear", "Sea Otter", "Turtle", "Silver Monkey" },
     ["Mythical Egg"] = { "Grey Mouse", "Brown Mouse", "Squirrel", "Red Giant Ant" },
-    ["Bug Egg"] = { "Snail", "Caterpillar", "Giant Ant", "Praying Mantis" },
-    ["Night Egg"] = { "Frog", "Hedgehog", "Mole", "Echo Frog", "Night Owl", },
+    ["Bug Egg"] = { "Snail", "Caterpillar", "Giant Ant", "Praying Mantis", "DragonFly", },
+    ["Night Egg"] = { "Frog", "Hedgehog", "Mole", "Echo Frog", "Night Owl", "Raccoon", },
     ["Bee Egg"] = { "Bee", "Honey Bee", "Bear Bee", "Petal Bee" },
     ["Anti Bee Egg"] = { "Wasp", "Moth", "Tarantula Hawk" },
     ["Oasis Egg"] = { "Meerkat", "Sand Snake", "Axolotl" },
@@ -22,6 +22,7 @@ local petTable = {
 	["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
 	["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
     ["Enchanted Egg"] = { "Ladybug", "Pixie", "Imp", "Glimmering Sprite" },
+    ["Zen Egg"] = { "Kappa", "Nihonzaru", "Tanuki", "Kitsune" },
 }
 
 local espEnabled = true
