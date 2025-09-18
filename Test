@@ -15,14 +15,15 @@ local petTable = {
     ["Night Egg"] = { "Frog", "Hedgehog", "Mole", "Echo Frog", "Night Owl", "Raccoon", },
     ["Bee Egg"] = { "Bee", "Honey Bee", "Bear Bee", "Petal Bee" },
     ["Anti Bee Egg"] = { "Wasp", "Moth", "Tarantula Hawk" },
-    ["Oasis Egg"] = { "Meerkat", "Sand Snake", "Axolotl" },
-    ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara" },
+    ["Oasis Egg"] = { "Meerkat", "Sand Snake", "Axolotl", "Fennec Fox", },
+    ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara", "Mimic Octopus", },
     ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus" },
     ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus" },
 	["Gourmet Egg"] = { "Bagel Bunny", "Pancake Mole", "Sushi Bear", "Spaghetti Sloth" },
-	["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem" },
-    ["Enchanted Egg"] = { "Ladybug", "Pixie", "Imp", "Glimmering Sprite" },
-    ["Zen Egg"] = { "Kappa", "Nihonzaru", "Tanuki", "Kitsune" },
+	["Sprout Egg"] = { "Dairy Cow", "Jackalope", "Seedling", "Golem", },
+    ["Enchanted Egg"] = { "Ladybug", "Pixie", "Imp", "Glimmering Sprite", },
+    ["Zen Egg"] = { "Kappa", "Nihonzaru", "Tanuki", "Kitsune", },
+    ["Exotic Bug Egg"] = { "Caterpillar", "Giant Ant", "Praying Mantis", "DragonFly", },
 }
 
 local espEnabled = true
